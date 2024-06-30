@@ -15,8 +15,8 @@ export const postTarea = async (req, res, next) => {
     nuevaTarea.fechaEntrega = fechaEntrega;
 
     nuevaTarea.save()
-    .then(() => {
-        res.send(`Tarea creada con exito, con el id ${nuevaTarea.id}`);
+    .then((data) => {
+        res.json(data)
     })
     .catch((error) => {
         next(error);

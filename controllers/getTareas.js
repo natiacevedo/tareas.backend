@@ -21,9 +21,9 @@ export const getTareas = (req, res, next) => {
     .then((data) => {
         console.log("get tareas =>", data)
         if (data.length === 0) {
-            res.send("No hay tareas")
+            res.json([])
         }else {
-            res.send(data)
+            res.json(data)
         }
     })
     .catch((error) => {
