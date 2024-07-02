@@ -14,6 +14,6 @@ export const loginUsuario = async (req, res, next) => {
                 next(error);
             });
     } else {
-        next(new Error("Usuario o contraseña incorrecta"));
+        next(new Error("Email o contraseña incorrectos"));
     }
 }
