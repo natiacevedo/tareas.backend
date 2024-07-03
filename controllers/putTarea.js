@@ -2,16 +2,16 @@ import { ModeloTarea } from "../database/models/ModeloTarea.js";
 
 export const putTarea = async (req, res, next) => {
     const idTarea = req.params.id;
-    const {asunto, prioridad, equipo, estado, usuario, descripcion, fechaEntrega} = req.body;
+    const {asunto, equipo, usuario, fechaEntrega, prioridad, descripcion, estado} = req.body;
 
     const datosNuevos = {};
     if(asunto) datosNuevos.asunto = asunto;
-    if(prioridad) datosNuevos.prioridad = prioridad;
     if(equipo) datosNuevos.equipo = equipo;
-    if(estado) datosNuevos.estado = estado;
     if(usuario) datosNuevos.usuario = usuario;
-    if(descripcion) datosNuevos.descripcion = descripcion;
     if(fechaEntrega) datosNuevos.fechaEntrega = fechaEntrega;
+    if(prioridad) datosNuevos.prioridad = prioridad;
+    if(descripcion) datosNuevos.descripcion = descripcion;
+    if(estado) datosNuevos.estado = estado;
 
     ModeloTarea.updateOne({id:idTarea}, datosNuevos)
     .then((data) => {

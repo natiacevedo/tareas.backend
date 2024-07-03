@@ -3,12 +3,13 @@ import { Schema, model} from "mongoose";
 const schemaTarea = new Schema({
     id: { type: Number, unique: true },
     asunto: String,
-    estado: String,
-    fechaEntrega: String,
+    equipo: String,
     usuario: String,
+    fechaEntrega: String,
     prioridad: String,
     descripcion: String,
-    equipo: String
+    estado: String,
+    usuarioLogueado: String
 });
 
 export const ModeloTarea = model("Tarea", schemaTarea)

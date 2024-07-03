@@ -9,8 +9,7 @@ export const getTareas = (req, res, next) => {
     const filtroUsuario = formatearFiltrosDB(req.query.usuario)
     
     
-    const filtros = {}
-    
+    const filtros = {usuarioLogueado: req.usuario.id}
     if(filtroAsunto) filtros.asunto = filtroAsunto
     if(filtroPrioridad) filtros.prioridad = filtroPrioridad
     if(filtroEquipo) filtros.equipo = filtroEquipo

@@ -2,17 +2,19 @@ import { ModeloTarea } from "../database/models/ModeloTarea.js";
 import { obtenerProximoId } from "../utils/functions.js";
 
 export const postTarea = async (req, res, next) => {
-    const {asunto, prioridad, equipo, estado, usuario, descripcion, fechaEntrega} = req.body;
+    const {asunto, equipo, usuario, fechaEntrega, prioridad, descripcion, estado} = req.body;
 
     const nuevaTarea = new ModeloTarea();
     nuevaTarea.id = await obtenerProximoId(ModeloTarea);
     nuevaTarea.asunto = asunto;
-    nuevaTarea.prioridad = prioridad;
     nuevaTarea.equipo = equipo;
-    nuevaTarea.estado = estado;
     nuevaTarea.usuario = usuario;
-    nuevaTarea.descripcion = descripcion;
     nuevaTarea.fechaEntrega = fechaEntrega;
+    nuevaTarea.prioridad = prioridad;
+    nuevaTarea.descripcion = descripcion;
+    nuevaTarea.estado = estado;
+
+    nuevaTarea.usuarioLogueado = req.usuario.id;
 
     nuevaTarea.save()
     .then((data) => {
