@@ -14,9 +14,9 @@ export const postUsuario = async (req, res, next) => {
         const nuevoUsuario = new ModeloUsuario();
         nuevoUsuario.id = await obtenerProximoId(ModeloUsuario);
         nuevoUsuario.nombre = nombre;
-        nuevoUsuario.apellido = apellido;
         nuevoUsuario.password = password;
         nuevoUsuario.email = email;
+    
 
         nuevoUsuario
             .save()
